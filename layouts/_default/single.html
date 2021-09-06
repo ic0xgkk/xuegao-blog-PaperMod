@@ -30,8 +30,12 @@
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" .Content -}}
-    {{- else }}{{ .Content }}{{ end }}
+    {{- partial "anchored_headings.html" -}}
+    {{ end }}
+    {{/* 文章头部-开始 */}}
+    {{- partial "content_header.html" -}}
+    {{/* 文章头部-结束 */}}
+    {{- .Content -}}
   </div>
   {{- end }}
 
