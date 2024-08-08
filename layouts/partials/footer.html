@@ -3,8 +3,18 @@
     {{- if site.Copyright }}
     <span>{{ site.Copyright | markdownify }}</span>
     {{- else }}
-    <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
-    {{- end }}
+    <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ .site.Title }}</a></span>
+    {{- end }} 
+
+    {{- /* 备案号信息 */ -}}
+    {{- with .Param "ChinaBeianNumber" }}
+        |
+        <span>
+            <a href="http://www.beian.gov.cn" rel="noopener noreferrer" target="_blank">{{.}}</a>
+        </span>
+        <br>
+    {{- end }} 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
